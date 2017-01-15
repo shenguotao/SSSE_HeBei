@@ -1,3 +1,19 @@
 LIBRARY mwSICARD
 EXPORTS 
+iDOpenPort
+iDCloseReader
+iPChangePIN
+iPReloadPIN
+iPOutputPIN
+iRCardInfo
+iWCardInfo
+iRMFFingerPrintInfo
+iWMFFingerPrintInfo
+iRCardType
+iRPSAMCardInfo
+ICC_verify
+ICC_change_pin
+ICC_read_bin
+ICC_write_bin
+
 
