@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mwSICARD", "mwSICARD\mwSICARD.vcxproj", "{FA25BB97-9DFF-4DC0-93B3-13042D0E67CB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SSKeyBDriver_MW", "SSKeyBDriver_MW\SSKeyBDriver_MW.vcxproj", "{FD6DBC03-3D5D-4466-991A-661EC9404A32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA25BB97-9DFF-4DC0-93B3-13042D0E67CB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA25BB97-9DFF-4DC0-93B3-13042D0E67CB}.Debug|Win32.Build.0 = Debug|Win32
+		{FA25BB97-9DFF-4DC0-93B3-13042D0E67CB}.Release|Win32.ActiveCfg = Release|Win32
+		{FA25BB97-9DFF-4DC0-93B3-13042D0E67CB}.Release|Win32.Build.0 = Release|Win32
+		{FD6DBC03-3D5D-4466-991A-661EC9404A32}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD6DBC03-3D5D-4466-991A-661EC9404A32}.Debug|Win32.Build.0 = Debug|Win32
+		{FD6DBC03-3D5D-4466-991A-661EC9404A32}.Release|Win32.ActiveCfg = Release|Win32
+		{FD6DBC03-3D5D-4466-991A-661EC9404A32}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
