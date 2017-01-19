@@ -1,0 +1,71 @@
+// mwSICARDActX.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(mwSICARDActX.tlb)，该类型库将成为
+// mwSICARDActX.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(9A2AAE9B-4EBA-4725-B6F6-84CFF315DB47), version(1.0),
+  control ]
+library mwSICARDActXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CmwSICARDActXCtrl 的主调度接口
+	[ 
+		uuid(3FFE3C52-F20E-4E61-9025-2E3C7B5D89BA)	
+	]
+	dispinterface _DmwSICARDActX
+	{
+		properties:
+			[id(20) ] BSTR strERRInfo;
+			[id(21) ] BSTR strOutFileData;
+			[id(22) ] BSTR strFingerPrint;
+			[id(23) ] BSTR strReadBin;
+			[id(24) ] LONG iReaderHandle;
+			[id(25) ] BSTR cardtype;
+	methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] LONG I_iDOpenPort(LONG iReaderPort);
+			[id(2)] LONG I_iDCloseReader(LONG gLngFd);
+			[id(3)] LONG I_iPInputPIN(LONG gLngFD, BSTR szPasswd);
+			[id(4)] LONG I_iPChangePIN(LONG gLngFD, BSTR szOldPasswd, BSTR szNewPasswd);
+			[id(5)] LONG I_iPReloadPIN(LONG glngFd, BSTR szCardPasswd);
+			[id(6)] LONG I_iWCardInfo(LONG glngFd, BSTR strVerInfo, BSTR striPassword, BSTR striInputFileAddr, BSTR striOutFileData);
+			[id(7)] LONG I_iRCardInfo(LONG glngFd, BSTR strVerInfo, BSTR striPassword, BSTR striInputFileAddr);
+			[id(8)] LONG I_iRMFFingerPrintInfo(LONG glngFd);
+			[id(9)] LONG I_iWMFFingerPrintInfo(LONG glngFd, BSTR strbFingerPrint);
+			[id(10)] LONG I_iRCardType(LONG glngFd);
+			[id(11)] LONG I_ICC_verify(LONG glngFD, LONG pin_len, BSTR strPIN);
+			[id(12)] LONG I_ICC_change_pin(LONG glngFd, LONG pin_len, BSTR strOldPin, BSTR strNewPIN);
+			[id(13)] LONG I_ICC_read_bin(LONG glngFd, LONG offset, LONG rlen);
+			[id(14)] LONG I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, BSTR strData);
+	};
+
+	//  CmwSICARDActXCtrl 的事件调度接口
+
+	[ 
+		uuid(192ECAEA-D223-465E-B379-39C08A90FAD3)	
+	]
+	dispinterface _DmwSICARDActXEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CmwSICARDActXCtrl 的类信息
+	[
+		uuid(E2BACA2A-6ABC-4751-81A3-DA19EDF18105)
+	]
+	coclass mwSICARDActX
+	{
+		[default] dispinterface _DmwSICARDActX;
+		[default, source] dispinterface _DmwSICARDActXEvents;
+	};
+
+};
