@@ -20,7 +20,7 @@ library mwSICARDActXLib
 	dispinterface _DmwSICARDActX
 	{
 		properties:
-			[id(24) ] LONG iReaderHandle;
+			[id(24) ] LONG iReaderhandle;
 			[id(25) ] BSTR cardtype;
             [id(30) ] BSTR ATR;
             [id(31) ] BSTR szCardNo;

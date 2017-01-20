@@ -90,18 +90,18 @@ int __stdcall iWMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char *
 }
 
 
-int __stdcall getCardNO(int iReaderHandle, char *iCardNo, char *iERRInfo)
+int __stdcall getCardNO(int iReaderhandle, char *iCardNo, char *iERRInfo)
 {
     int st = STATUS_SYSTEM;
     string strErrInfo = "NULL";
     int iType = 3; //自动寻卡，接触优先
-    long handle = iReaderHandle;
+    long handle = iReaderhandle;
     //TODO 
     strcpy(iERRInfo, strErrInfo.c_str());
     return st;
 }
 
-unsigned __stdcall iRCardType(HANDLE ireaderhandle, char *cardtype, char *ierrinfo)
+unsigned __stdcall iRCardType(int iReaderhandle, char *cardtype, char *ierrinfo)
 {
     int st = STATUS_SYSTEM;
     //TODO 
@@ -109,7 +109,7 @@ unsigned __stdcall iRCardType(HANDLE ireaderhandle, char *cardtype, char *ierrin
     return st;
 }
 
-unsigned __stdcall iRPSAMCardInfo(HANDLE ireaderhandle, char *psamid, char *ierrinfo)
+unsigned __stdcall iRPSAMCardInfo(int iReaderhandle, char *psamid, char *ierrinfo)
 {
     int st = STATUS_SYSTEM;
     //TODO 
@@ -117,7 +117,7 @@ unsigned __stdcall iRPSAMCardInfo(HANDLE ireaderhandle, char *psamid, char *ierr
     return st;
 }
 
-unsigned __stdcall ICC_verify(HANDLE ireaderhandle, char pin_len, char *pin)
+unsigned __stdcall ICC_verify(int iReaderhandle, char pin_len, char *pin)
 {
     int st = STATUS_SYSTEM;
     //TODO 
@@ -125,7 +125,7 @@ unsigned __stdcall ICC_verify(HANDLE ireaderhandle, char pin_len, char *pin)
     return st;
 }
 
-unsigned __stdcall ICC_change_pin(HANDLE ireaderhandle, char pin_len, char *oldpin, char *newpin)
+unsigned __stdcall ICC_change_pin(int iReaderhandle, char pin_len, char *oldpin, char *newpin)
 {
     int st = STATUS_SYSTEM;
     //TODO 
@@ -133,7 +133,7 @@ unsigned __stdcall ICC_change_pin(HANDLE ireaderhandle, char pin_len, char *oldp
     return st;
 }
 
-unsigned __stdcall ICC_read_bin(HANDLE ireaderhandle, int offset, int len, char *data)
+unsigned __stdcall ICC_read_bin(int iReaderhandle, int offset, int len, char *data)
 {
     int st = STATUS_SYSTEM;
     //TODO 
@@ -141,7 +141,7 @@ unsigned __stdcall ICC_read_bin(HANDLE ireaderhandle, int offset, int len, char 
     return st;
 }
 
-unsigned __stdcall ICC_write_bin(HANDLE ireaderhandle, int offset, int len, char *data)
+unsigned __stdcall ICC_write_bin(int iReaderhandle, int offset, int len, char *data)
 {
     int st = STATUS_SYSTEM;
     //TODO 

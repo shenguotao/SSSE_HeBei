@@ -27,3 +27,8 @@
 *.exe
 *.out
 *.app
+/HBSSSE/HBSSSE.suo
+/HBSSSE/mwSICARDActX/Debug/mwSICARDActX.log
+log
+Release
+Debug
