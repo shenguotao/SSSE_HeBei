@@ -20,13 +20,17 @@ library mwSICARDActXLib
 	dispinterface _DmwSICARDActX
 	{
 		properties:
-			[id(20) ] BSTR strERRInfo;
-			[id(21) ] BSTR strOutFileData;
-			[id(22) ] BSTR strFingerPrint;
-			[id(23) ] BSTR strReadBin;
 			[id(24) ] LONG iReaderHandle;
 			[id(25) ] BSTR cardtype;
-	methods:
+            [id(30) ] BSTR ATR;
+            [id(31) ] BSTR szCardNo;
+            [id(32) ] BSTR iERRInfo;
+            [id(33) ] BSTR ipsamcode;
+            [id(34) ] BSTR idevicecode;
+            [id(35) ] BSTR iOutFileData;
+            [id(36) ] BSTR bFingerPrint;
+            [id(37) ] BSTR data;
+    methods:
 
 			[id(DISPID_ABOUTBOX)] void AboutBox();
 			[id(1)] LONG I_iDOpenPort(LONG iReaderPort);
@@ -43,7 +47,11 @@ library mwSICARDActXLib
 			[id(12)] LONG I_ICC_change_pin(LONG glngFd, LONG pin_len, BSTR strOldPin, BSTR strNewPIN);
 			[id(13)] LONG I_ICC_read_bin(LONG glngFd, LONG offset, LONG rlen);
 			[id(14)] LONG I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, BSTR strData);
-	};
+            [id(26)] LONG I_getCardATR(LONG glngFd);
+            [id(27)] LONG I_getCardNO(LONG glngFd);
+            [id(28)] LONG I_AuthIRK(LONG glngFd);
+            [id(29)] LONG I_iGetPSAMcode(LONG glngFd);
+    };
 
 	//  CmwSICARDActXCtrl 的事件调度接口
 

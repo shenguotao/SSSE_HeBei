@@ -4,11 +4,12 @@ iDOpenPort
 iDCloseReader
 iPChangePIN
 iPReloadPIN
-iPOutputPIN
+iPInputPIN
 iRCardInfo
 iWCardInfo
 iRMFFingerPrintInfo
 iWMFFingerPrintInfo
+getCardNO
 iRCardType
 iRPSAMCardInfo
 ICC_verify

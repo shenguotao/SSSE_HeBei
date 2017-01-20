@@ -52,13 +52,13 @@ extern "C"
     int __stdcall iDCloseReader(int iReaderhandle, char * iERRInfo);
     int __stdcall iPChangePIN(int iReaderhandle, char * szOldPasswd, char * szNewPasswd, char * iERRInfo);
     int __stdcall iPReloadPIN(int iReaderhandle, char * SzCardPasswd, char * iERRInfo);
-    int __stdcall iPOutputPIN(int iReaderhandle, char * szPasswd, char * iERRInfo);
+    int __stdcall iPInputPIN(int iReaderhandle, char * szPasswd, char * iERRInfo);
     int __stdcall iRCardInfo(int iReaderhandle, char * iVerInfo, char * iPassword, char * iInputFileAddr, char * iOutFileData, char * iERRInfo);
     int __stdcall iWCardInfo(int iReaderhandle, char * iVerInfo, char * iPassword, char * iInputFileAddr, char * iOutFileData, char * iERRInfo);
     int __stdcall iRMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char * iERRInfo);
     int __stdcall iWMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char * iERRInfo);
-
-    unsigned __stdcall iRCardType(HANDLE ireaderhandle, char *cardtype, char *ierrinfo);
+    int __stdcall getCardNO(int iReaderHandle, char *iCardNo, char *iERRInfo);
+    unsigned __stdcall iRCardType(int ireaderhandle, char *cardtype, char *ierrinfo);
 /***********************************************************************
 功能:
      识别读卡器中卡类型
@@ -73,7 +73,7 @@ extern "C"
      ret = iRCardType (ireaderhandle, cardtype, ierrinfo)；
 ************************************************************************/
 
-    unsigned __stdcall iRPSAMCardInfo(HANDLE ireaderhandle, char *psamid, char *ierrinfo);
+    unsigned __stdcall iRPSAMCardInfo(int ireaderhandle, char *psamid, char *ierrinfo);
 /***********************************************************************
 功能:
      读PSAM卡号
@@ -88,7 +88,7 @@ extern "C"
      ret = iRPSAMCardInfo (ireaderhandle, psamid, ierrinfo);
 ************************************************************************/
 
-    unsigned __stdcall ICC_verify(HANDLE ireaderhandle, char pin_len, char *pin);
+    unsigned __stdcall ICC_verify(int ireaderhandle, char pin_len, char *pin);
 
 /***********************************************************************
 功能:
@@ -106,7 +106,7 @@ extern "C"
      ret= ICC_verify (ireaderhandle, 2, "FFFF")	;
 ************************************************************************/
 
-    unsigned __stdcall ICC_change_pin(HANDLE ireaderhandle, char pin_len, 
+    unsigned __stdcall ICC_change_pin(int ireaderhandle, char pin_len, 
 char *oldpin, char *newpin); 
 /***********************************************************************
 功能:
@@ -123,7 +123,7 @@ newpin			新PIN内容
      ret= ICC_change_pin (ireaderhandle, 2, "FFFF", "FFFF")
 ************************************************************************/
 
-unsigned __stdcall ICC_read_bin(HANDLE ireaderhandle, int offset, int len, char *data); 
+unsigned __stdcall ICC_read_bin(int ireaderhandle, int offset, int len, char *data); 
 /***********************************************************************
 功能:
      从卡上地址offset开始读len个字节到缓冲区data中
@@ -139,7 +139,7 @@ unsigned __stdcall ICC_read_bin(HANDLE ireaderhandle, int offset, int len, char 
      ret= ICC_read_bin (ireaderhandle, 10, 16, data) //将IC卡上10开始26个字节的数据读至data
 ************************************************************************/
 
-unsigned __stdcall ICC_write_bin(HANDLE ireaderhandle, int offset, int len, char *data); 
+unsigned __stdcall ICC_write_bin(int ireaderhandle, int offset, int len, char *data); 
 /***********************************************************************
 功能:
      将缓冲区data中数据写入卡上地址从offset开始len个字节
@@ -154,7 +154,6 @@ unsigned __stdcall ICC_write_bin(HANDLE ireaderhandle, int offset, int len, char
 举例:
      ret= ICC_write_bin (ireaderhandle, 10, 16, data) 
 ************************************************************************/
-
 
 
 

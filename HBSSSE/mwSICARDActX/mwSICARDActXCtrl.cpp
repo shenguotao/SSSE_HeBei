@@ -51,12 +51,22 @@ BEGIN_DISPATCH_MAP(CmwSICARDActXCtrl, COleControl)
 	DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_ICC_change_pin", dispidI_ICC_change_pin, I_ICC_change_pin, VT_I4, VTS_I4 VTS_I4 VTS_BSTR VTS_BSTR)
 	DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_ICC_read_bin", dispidI_ICC_read_bin, I_ICC_read_bin, VT_I4, VTS_I4 VTS_I4 VTS_I4 VTS_BSTR)
 	DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_ICC_write_bin", dispidI_ICC_write_bin, I_ICC_write_bin, VT_I4, VTS_I4 VTS_I4 VTS_I4 VTS_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "strERRInfo", dispidstrERRInfo, m_strERRInfo, OnstrERRInfoChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "strOutFileData", dispidstrOutFileData, m_strOutFileData, OnstrOutFileDataChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "strFingerPrint", dispidstrFingerPrint, m_strFingerPrint, OnstrFingerPrintChanged, VT_BSTR)
-	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "strReadBin", dispidstrReadBin, m_strReadBin, OnstrReadBinChanged, VT_BSTR)
+	
+	
 	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "iReaderHandle", dispidiReaderHandle, m_iReaderHandle, OniReaderHandleChanged, VT_I4)
 	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "cardtype", dispidcardtype, m_cardtype, OncardtypeChanged, VT_BSTR)
+    DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_getCardATR", dispidI_getCardATR, I_getCardATR, VT_I4, VTS_I4)
+    DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_getCardNO", dispidI_getCardNO, I_getCardNO, VT_I4, VTS_I4)
+    DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_AuthIRK", dispidI_AuthIRK, I_AuthIRK, VT_I4, VTS_I4)
+    DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_iGetPSAMcode", dispidI_iGetPSAMcode, I_iGetPSAMcode, VT_I4, VTS_I4)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "ATR", dispidATR, m_ATR, OnATRChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "szCardNo", dispidszCardNo, m_szCardNo, OnszCardNoChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "iERRInfo", dispidiERRInfo, m_iERRInfo, OniERRInfoChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "ipsamcode", dispidipsamcode, m_ipsamcode, OnipsamcodeChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "idevicecode", dispididevicecode, m_idevicecode, OnidevicecodeChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "iOutFileData", dispidiOutFileData, m_iOutFileData, OniOutFileDataChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "bFingerPrint", dispidbFingerPrint, m_bFingerPrint, OnbFingerPrintChanged, VT_BSTR)
+    DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "data", dispiddata, m_data, OndataChanged, VT_BSTR)
 END_DISPATCH_MAP()
 
 
@@ -221,11 +231,11 @@ LONG CmwSICARDActXCtrl::I_iDOpenPort(LONG iReaderPort)
 	iRet = iDOpenPort((int)iReaderPort, &iHandle, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 	m_iReaderHandle = iHandle;	
 
 	return 0;
@@ -250,11 +260,11 @@ LONG CmwSICARDActXCtrl::I_iDCloseReader(LONG glngFd)
 	iRet = iDCloseReader((int)glngFd, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 	return 0;
 }
 
@@ -281,11 +291,11 @@ LONG CmwSICARDActXCtrl::I_iPChangePIN(LONG glngFd, LPCTSTR szOldPasswd, LPCTSTR 
 	iRet = iPChangePIN((int)glngFd, (char*)szOldPasswd, (char*)szNewPasswd, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 
 	return 0;
 }
@@ -303,11 +313,11 @@ LONG CmwSICARDActXCtrl::I_iPReloadPIN(LONG glngFd, LPCTSTR szCardPasswd)
 	iRet = iPReloadPIN((int)glngFd, (char*)szCardPasswd, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 
 	return 0;
 }
@@ -325,11 +335,11 @@ LONG CmwSICARDActXCtrl::I_iWCardInfo(LONG glngFd, LPCTSTR strVerInfo, LPCTSTR st
 	iRet = iWCardInfo((int)glngFd, (char*)strVerInfo, (char*)striPassword, (char*) striInputFileAddr, (char*)striOutFileData, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 
 	return 0;
 }
@@ -349,13 +359,13 @@ LONG CmwSICARDActXCtrl::I_iRCardInfo(LONG glngFd, LPCTSTR strVerInfo, LPCTSTR st
 	iRet = iRCardInfo((int)glngFd, (char*)strVerInfo, (char*)striPassword, (char*)striInputFileAddr, szFileData, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
-		m_strOutFileData.Empty();
+		m_iERRInfo.Format("%s", szErrInfo);
+		m_iOutFileData.Empty();
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
-	m_strOutFileData.Format("%s", szFileData);
+	m_iERRInfo.Format("NULL");
+	m_iOutFileData.Format("%s", szFileData);
 	return 0;
 }
 
@@ -374,13 +384,13 @@ LONG CmwSICARDActXCtrl::I_iRMFFingerPrintInfo(LONG glngFd)
 	iRet = iRMFFingerPrintInfo((int)glngFd, szFingerFileData, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
-		m_strFingerPrint.Empty();
+		m_iERRInfo.Format("%s", szErrInfo);
+		m_data.Empty();
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
-	m_strFingerPrint.Format("%s", szFingerFileData);
+	m_iERRInfo.Format("NULL");
+	m_data.Format("%s", szFingerFileData);
 	return 0;
 }
 
@@ -397,11 +407,11 @@ LONG CmwSICARDActXCtrl::I_iWMFFingerPrintInfo(LONG glngFd, LPCTSTR strbFingerPri
 	iRet = iWMFFingerPrintInfo((int)glngFd, (char*)strbFingerPrint, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 	return 0;
 }
 
@@ -420,11 +430,11 @@ LONG CmwSICARDActXCtrl::I_iRCardType(LONG glngFd)
 	iRet = iRCardType((HANDLE)glngFd, szCardType, szErrInfo);
 	if(iRet)
 	{
-		m_strERRInfo.Format("%s", szErrInfo);
+		m_iERRInfo.Format("%s", szErrInfo);
 		return iRet;
 	}
 	
-	m_strERRInfo.Format("NULL");
+	m_iERRInfo.Format("NULL");
 	return 0;
 }
 
@@ -442,7 +452,7 @@ LONG CmwSICARDActXCtrl::I_ICC_verify(LONG glngFD, LONG pin_len, LPCTSTR strPIN)
 		return iRet;
 	}
 	
-	//m_strERRInfo.Format("NULL");
+	//m_iERRInfo.Format("NULL");
 	return 0;
 }
 
@@ -476,11 +486,11 @@ LONG CmwSICARDActXCtrl::I_ICC_read_bin(LONG glngFd, LONG offset, LONG rlen)
 	iRet = ICC_read_bin((HANDLE)glngFd, (int)offset, (int)rlen, szReadData);
 	if(iRet)
 	{
-		m_strReadBin.Empty();
+		m_data.Empty();
 		return iRet;
 	}
 
-	m_strReadBin.Format("%s", szReadData);
+	m_data.Format("%s", szReadData);
 	return 0;
 }
 
@@ -491,46 +501,6 @@ LONG CmwSICARDActXCtrl::I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, LPC
 
 	// TODO: 在此添加调度处理程序代码
 	return ICC_write_bin((HANDLE)glngFd, (int)offset, (int)wlen, (char*)strData);
-}
-
-
-void CmwSICARDActXCtrl::OnstrERRInfoChanged(void)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO: 在此添加属性处理程序代码
-
-	SetModifiedFlag();
-}
-
-
-void CmwSICARDActXCtrl::OnstrOutFileDataChanged(void)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO: 在此添加属性处理程序代码
-
-	SetModifiedFlag();
-}
-
-
-void CmwSICARDActXCtrl::OnstrFingerPrintChanged(void)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO: 在此添加属性处理程序代码
-
-	SetModifiedFlag();
-}
-
-
-void CmwSICARDActXCtrl::OnstrReadBinChanged(void)
-{
-	AFX_MANAGE_STATE(AfxGetStaticModuleState());
-
-	// TODO: 在此添加属性处理程序代码
-
-	SetModifiedFlag();
 }
 
 
@@ -551,4 +521,132 @@ void CmwSICARDActXCtrl::OncardtypeChanged(void)
 	// TODO: 在此添加属性处理程序代码
 
 	SetModifiedFlag();
+}
+
+
+BOOL CmwSICARDActXCtrl::IsInvokeAllowed(DISPID /*dispid*/)
+{
+    // TODO: 在此添加专用代码和/或调用基类
+
+    return TRUE;
+}
+
+
+LONG CmwSICARDActXCtrl::I_getCardATR(LONG glngFd)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加调度处理程序代码
+
+    return 0;
+}
+
+
+LONG CmwSICARDActXCtrl::I_getCardNO(LONG glngFd)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加调度处理程序代码
+
+    return 0;
+}
+
+
+LONG CmwSICARDActXCtrl::I_AuthIRK(LONG glngFd)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加调度处理程序代码
+
+    return 0;
+}
+
+
+LONG CmwSICARDActXCtrl::I_iGetPSAMcode(LONG glngFd)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加调度处理程序代码
+
+    return 0;
+}
+
+
+void CmwSICARDActXCtrl::OnATRChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OnszCardNoChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OniERRInfoChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OnipsamcodeChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OnidevicecodeChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OniOutFileDataChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OnbFingerPrintChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
+}
+
+
+void CmwSICARDActXCtrl::OndataChanged(void)
+{
+    AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+    // TODO: 在此添加属性处理程序代码
+
+    SetModifiedFlag();
 }

@@ -46,11 +46,14 @@ int __stdcall iPReloadPIN(int iReaderhandle, char * SzCardPasswd, char * iERRInf
     return st;
 }
 
-int __stdcall iPOutputPIN(int iReaderhandle, char * szPasswd, char * iERRInfo)
+int __stdcall iPInputPIN(int iReaderhandle, char * szPasswd, char * iERRInfo)
 {
     int st = STATUS_SYSTEM;
+    string strErrInfo = "NULL";
+    int iType = 3; //自动寻卡，接触优先
+    long handle = iReaderhandle;
     //TODO 
-
+    strcpy(iERRInfo, strErrInfo.c_str());
     return st;
 }
 
@@ -83,6 +86,18 @@ int __stdcall iWMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char *
     int st = STATUS_SYSTEM;
     //TODO 
 
+    return st;
+}
+
+
+int __stdcall getCardNO(int iReaderHandle, char *iCardNo, char *iERRInfo)
+{
+    int st = STATUS_SYSTEM;
+    string strErrInfo = "NULL";
+    int iType = 3; //自动寻卡，接触优先
+    long handle = iReaderHandle;
+    //TODO 
+    strcpy(iERRInfo, strErrInfo.c_str());
     return st;
 }
 

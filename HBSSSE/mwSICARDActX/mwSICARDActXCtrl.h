@@ -42,12 +42,23 @@ protected:
 // 调度和事件 ID
 public:
 	enum {
-		dispidcardtype = 25,
+        dispiddata = 37,
+        dispidbFingerPrint = 36,
+        dispidiOutFileData = 35,
+        dispididevicecode = 34,
+        dispidipsamcode = 33,
+        dispidiERRInfo = 32,
+        dispidszCardNo = 31,
+        dispidATR = 30,
+        dispidI_iGetPSAMcode = 29L,
+        dispidI_AuthIRK = 28L,
+        dispidI_getCardNO = 27L,
+        dispidI_getCardATR = 26L,
+        dispidcardtype = 25,
 		dispidiReaderHandle = 24,
-		dispidstrReadBin = 23,
-		dispidstrFingerPrint = 22,
-		dispidstrOutFileData = 21,
-		dispidstrERRInfo = 20,
+
+		
+
 		dispidI_ICC_write_bin = 14L,
 		dispidI_ICC_read_bin = 13L,
 		dispidI_ICC_change_pin = 12L,
@@ -83,17 +94,34 @@ protected:
 	LONG I_ICC_change_pin(LONG glngFd, LONG pin_len, LPCTSTR strOldPin, LPCTSTR strNewPIN);
 	LONG I_ICC_read_bin(LONG glngFd, LONG offset, LONG rlen);
 	LONG I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, LPCTSTR strData);
-	void OnstrERRInfoChanged(void);
-	CString m_strERRInfo;
-	void OnstrOutFileDataChanged(void);
-	CString m_strOutFileData;
-	void OnstrFingerPrintChanged(void);
-	CString m_strFingerPrint;
-	void OnstrReadBinChanged(void);
-	CString m_strReadBin;
+	
+	
 	void OniReaderHandleChanged(void);
 	LONG m_iReaderHandle;
 	void OncardtypeChanged(void);
 	CString m_cardtype;
+public:
+    virtual BOOL IsInvokeAllowed(DISPID /*dispid*/);
+protected:
+    LONG I_getCardATR(LONG glngFd);
+    LONG I_getCardNO(LONG glngFd);
+    LONG I_AuthIRK(LONG glngFd);
+    LONG I_iGetPSAMcode(LONG glngFd);
+    void OnATRChanged(void);
+    CString m_ATR;
+    void OnszCardNoChanged(void);
+    CString m_szCardNo;
+    void OniERRInfoChanged(void);
+    CString m_iERRInfo;
+    void OnipsamcodeChanged(void);
+    CString m_ipsamcode;
+    void OnidevicecodeChanged(void);
+    CString m_idevicecode;
+    void OniOutFileDataChanged(void);
+    CString m_iOutFileData;
+    void OnbFingerPrintChanged(void);
+    CString m_bFingerPrint;
+    void OndataChanged(void);
+    CString m_data;
 };
 
