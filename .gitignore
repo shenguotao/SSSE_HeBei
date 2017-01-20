@@ -27,3 +27,11 @@
 *.exe
 *.out
 *.app
+HBSSSE.suo
+ipch
+HBSSSE.sdf
+Debug
+SSKeyBDriver_MW.aps
+Debug
+mwSICARD.aps
+Debug
