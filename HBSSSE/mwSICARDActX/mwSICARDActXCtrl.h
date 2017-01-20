@@ -55,7 +55,7 @@ public:
         dispidI_getCardNO = 27L,
         dispidI_getCardATR = 26L,
         dispidcardtype = 25,
-		dispidiReaderHandle = 24,
+		dispidiReaderhandle = 24,
 
 		
 
@@ -96,8 +96,8 @@ protected:
 	LONG I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, LPCTSTR strData);
 	
 	
-	void OniReaderHandleChanged(void);
-	LONG m_iReaderHandle;
+	void OniReaderhandleChanged(void);
+	LONG m_iReaderhandle;
 	void OncardtypeChanged(void);
 	CString m_cardtype;
 public:

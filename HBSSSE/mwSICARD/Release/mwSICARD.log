@@ -1,36 +1,9 @@
-﻿生成启动时间为 2017/1/20 14:54:44。
-     1>项目“E:\git\SSSE_HeBei\HBSSSE\mwSICARD\mwSICARD.vcxproj”在节点 2 上(build 个目标)。
-     1>InitializeBuildStatus:
-         正在对“Release\mwSICARD.unsuccessfulbuild”执行 Touch 任务。
-       ClCompile:
-         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D MWSICARD_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mwSICARD.cpp
-         mwSICARD.cpp
-     1>mwSICARD.cpp(56): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : 参见“strcpy”的声明
-     1>mwSICARD.cpp(100): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\string.h(105) : 参见“strcpy”的声明
-       ResourceCompile:
-         所有输出均为最新。
-       Link:
-         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:E:\git\SSSE_HeBei\HBSSSE\mwSICARD\lib\Release\ mwpd_32SCpp.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"mwSICARD.def" /MANIFEST /ManifestFile:"Release\mwSICARD.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.lib" /MACHINE:X86 /DLL Release\mwSICARD.res
-         Release\CLoger.obj
-         Release\CriticalSectionLock.obj
-         Release\dllmain.obj
-         Release\mwSICARD.obj
-         Release\SSSE32.obj
-         Release\stdafx.obj
-         Release\Tools.obj
-            正在创建库 E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.lib 和对象 E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.exp
-         正在生成代码
-         已完成代码的生成
-         mwSICARD.vcxproj -> E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.dll
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.dll;#2" /manifest Release\mwSICARD.dll.intermediate.manifest
-       FinalizeBuildStatus:
-         正在删除文件“Release\mwSICARD.unsuccessfulbuild”。
-         正在对“Release\mwSICARD.lastbuildstate”执行 Touch 任务。
-     1>已完成生成项目“E:\git\SSSE_HeBei\HBSSSE\mwSICARD\mwSICARD.vcxproj”(build 个目标)的操作。
+﻿生成启动时间为 2017-01-20 22:56:59。
+     1>项目“C:\Users\jeaming\Documents\GitHub\SSSE_HeBei\HBSSSE\mwSICARD\mwSICARD.vcxproj”在节点 2 上(clean 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Release\mwSICARD.lastbuildstate”。
+     1>已完成生成项目“C:\Users\jeaming\Documents\GitHub\SSSE_HeBei\HBSSSE\mwSICARD\mwSICARD.vcxproj”(clean 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:10.39
+已用时间 00:00:00.02

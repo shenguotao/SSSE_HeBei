@@ -57,44 +57,44 @@ extern "C"
     int __stdcall iWCardInfo(int iReaderhandle, char * iVerInfo, char * iPassword, char * iInputFileAddr, char * iOutFileData, char * iERRInfo);
     int __stdcall iRMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char * iERRInfo);
     int __stdcall iWMFFingerPrintInfo(int iReaderhandle, char * bFingerPrint, char * iERRInfo);
-    int __stdcall getCardNO(int iReaderHandle, char *iCardNo, char *iERRInfo);
-    unsigned __stdcall iRCardType(int ireaderhandle, char *cardtype, char *ierrinfo);
+    int __stdcall getCardNO(int iReaderhandle, char *iCardNo, char *iERRInfo);
+    unsigned __stdcall iRCardType(int iReaderhandle, char *cardtype, char *ierrinfo);
 /***********************************************************************
 功能:
      识别读卡器中卡类型
 参数:
-     ireaderhandle  	    通讯端口句柄
+     iReaderhandle  	    通讯端口句柄
      cardtype				卡类型，0-cpu卡；1-4428卡；2-4442卡；3-其他
      ierrinfo				出错时候返回错误信息，包括结尾“\0”最大256字节。
 返回: 
      =0 	处理成功
      非0 	处理失败
 举例:
-     ret = iRCardType (ireaderhandle, cardtype, ierrinfo)；
+     ret = iRCardType (iReaderhandle, cardtype, ierrinfo)；
 ************************************************************************/
 
-    unsigned __stdcall iRPSAMCardInfo(int ireaderhandle, char *psamid, char *ierrinfo);
+    unsigned __stdcall iRPSAMCardInfo(int iReaderhandle, char *psamid, char *ierrinfo);
 /***********************************************************************
 功能:
      读PSAM卡号
 参数:
-     ireaderhandle  	    通讯端口句柄
+     iReaderhandle  	    通讯端口句柄
      psamid				PSAM卡号
      ierrinfo				出错时候返回错误信息，包括结尾“\0”最大256字节。
 返回: 
      =0 	处理成功
      非0 	处理失败
 举例:
-     ret = iRPSAMCardInfo (ireaderhandle, psamid, ierrinfo);
+     ret = iRPSAMCardInfo (iReaderhandle, psamid, ierrinfo);
 ************************************************************************/
 
-    unsigned __stdcall ICC_verify(int ireaderhandle, char pin_len, char *pin);
+    unsigned __stdcall ICC_verify(int iReaderhandle, char pin_len, char *pin);
 
 /***********************************************************************
 功能:
      校验IC卡PIN，此函数只对逻辑加密卡有效
 参数:
-     ireaderhandle		已打开的通讯端口句柄
+     iReaderhandle		已打开的通讯端口句柄
      pin_len 			PIN长度
      pin				PIN内容
 返回: 
@@ -103,16 +103,16 @@ extern "C"
 说明: 
 适用于所有支持的带有加密逻辑的存储卡
 举例:
-     ret= ICC_verify (ireaderhandle, 2, "FFFF")	;
+     ret= ICC_verify (iReaderhandle, 2, "FFFF")	;
 ************************************************************************/
 
-    unsigned __stdcall ICC_change_pin(int ireaderhandle, char pin_len, 
+    unsigned __stdcall ICC_change_pin(int iReaderhandle, char pin_len, 
 char *oldpin, char *newpin); 
 /***********************************************************************
 功能:
      核对PIN并修改PIN，此函数只对逻辑加密卡有效
 参数:
-     ireaderhandle		已打开的通讯端口句柄
+     iReaderhandle		已打开的通讯端口句柄
      pin_len 			PIN长度
      oldpin			旧PIN内容
 newpin			新PIN内容
@@ -120,15 +120,15 @@ newpin			新PIN内容
      =0 	处理成功
      非0 	处理失败
 举例:
-     ret= ICC_change_pin (ireaderhandle, 2, "FFFF", "FFFF")
+     ret= ICC_change_pin (iReaderhandle, 2, "FFFF", "FFFF")
 ************************************************************************/
 
-unsigned __stdcall ICC_read_bin(int ireaderhandle, int offset, int len, char *data); 
+unsigned __stdcall ICC_read_bin(int iReaderhandle, int offset, int len, char *data); 
 /***********************************************************************
 功能:
      从卡上地址offset开始读len个字节到缓冲区data中
 参数:
-     ireaderhandle		已打开的通讯端口句柄
+     iReaderhandle		已打开的通讯端口句柄
 	 offset			读数据开始的绝对地址
 	 len     		欲读数据的长度
 	 data			读出的数据
@@ -136,15 +136,15 @@ unsigned __stdcall ICC_read_bin(int ireaderhandle, int offset, int len, char *da
      =0 	处理成功
      非0 	处理失败
 举例:
-     ret= ICC_read_bin (ireaderhandle, 10, 16, data) //将IC卡上10开始26个字节的数据读至data
+     ret= ICC_read_bin (iReaderhandle, 10, 16, data) //将IC卡上10开始26个字节的数据读至data
 ************************************************************************/
 
-unsigned __stdcall ICC_write_bin(int ireaderhandle, int offset, int len, char *data); 
+unsigned __stdcall ICC_write_bin(int iReaderhandle, int offset, int len, char *data); 
 /***********************************************************************
 功能:
      将缓冲区data中数据写入卡上地址从offset开始len个字节
 参数:
-     Ireaderhandle		已打开的通讯端口句柄
+     iReaderhandle		已打开的通讯端口句柄
 	 offset			写入数据的绝对地址
 	 len     		欲写数据的长度
 	 data			写入的数据
@@ -152,7 +152,7 @@ unsigned __stdcall ICC_write_bin(int ireaderhandle, int offset, int len, char *d
      =0 	处理成功
      非0 	处理失败
 举例:
-     ret= ICC_write_bin (ireaderhandle, 10, 16, data) 
+     ret= ICC_write_bin (iReaderhandle, 10, 16, data) 
 ************************************************************************/
 
 

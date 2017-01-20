@@ -53,7 +53,7 @@ BEGIN_DISPATCH_MAP(CmwSICARDActXCtrl, COleControl)
 	DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_ICC_write_bin", dispidI_ICC_write_bin, I_ICC_write_bin, VT_I4, VTS_I4 VTS_I4 VTS_I4 VTS_BSTR)
 	
 	
-	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "iReaderHandle", dispidiReaderHandle, m_iReaderHandle, OniReaderHandleChanged, VT_I4)
+	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "iReaderhandle", dispidiReaderhandle, m_iReaderhandle, OniReaderhandleChanged, VT_I4)
 	DISP_PROPERTY_NOTIFY_ID(CmwSICARDActXCtrl, "cardtype", dispidcardtype, m_cardtype, OncardtypeChanged, VT_BSTR)
     DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_getCardATR", dispidI_getCardATR, I_getCardATR, VT_I4, VTS_I4)
     DISP_FUNCTION_ID(CmwSICARDActXCtrl, "I_getCardNO", dispidI_getCardNO, I_getCardNO, VT_I4, VTS_I4)
@@ -236,7 +236,7 @@ LONG CmwSICARDActXCtrl::I_iDOpenPort(LONG iReaderPort)
 	}
 
 	m_iERRInfo.Format("NULL");
-	m_iReaderHandle = iHandle;	
+	m_iReaderhandle = iHandle;	
 
 	return 0;
 }
@@ -427,7 +427,7 @@ LONG CmwSICARDActXCtrl::I_iRCardType(LONG glngFd)
 	
 	memset(szErrInfo, 0, sizeof(szErrInfo));
 	memset(szCardType, 0, sizeof(szCardType));
-	iRet = iRCardType((HANDLE)glngFd, szCardType, szErrInfo);
+	iRet = iRCardType(glngFd, szCardType, szErrInfo);
 	if(iRet)
 	{
 		m_iERRInfo.Format("%s", szErrInfo);
@@ -446,13 +446,12 @@ LONG CmwSICARDActXCtrl::I_ICC_verify(LONG glngFD, LONG pin_len, LPCTSTR strPIN)
 	// TODO: 在此添加调度处理程序代码
 	int iRet = 0;
 
-	iRet = ICC_verify((HANDLE)glngFD, (char)pin_len, (char*)strPIN);
+	iRet = ICC_verify(glngFD, (char)pin_len, (char*)strPIN);
 	if(iRet)
 	{
 		return iRet;
 	}
 	
-	//m_iERRInfo.Format("NULL");
 	return 0;
 }
 
@@ -464,7 +463,7 @@ LONG CmwSICARDActXCtrl::I_ICC_change_pin(LONG glngFd, LONG pin_len, LPCTSTR strO
 	// TODO: 在此添加调度处理程序代码
 	int iRet = 0;
 
-	iRet = ICC_change_pin((HANDLE)glngFd, (char)pin_len, (char*)strOldPin, (char*)strNewPIN);
+	iRet = ICC_change_pin(glngFd, (char)pin_len, (char*)strOldPin, (char*)strNewPIN);
 	if(iRet)
 	{
 		return iRet;
@@ -483,7 +482,7 @@ LONG CmwSICARDActXCtrl::I_ICC_read_bin(LONG glngFd, LONG offset, LONG rlen)
 	char szReadData[READ_FILE_LEN];
 
 	memset(szReadData, 0, sizeof(szReadData));
-	iRet = ICC_read_bin((HANDLE)glngFd, (int)offset, (int)rlen, szReadData);
+	iRet = ICC_read_bin(glngFd, (int)offset, (int)rlen, szReadData);
 	if(iRet)
 	{
 		m_data.Empty();
@@ -500,11 +499,11 @@ LONG CmwSICARDActXCtrl::I_ICC_write_bin(LONG glngFd, LONG offset, LONG wlen, LPC
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
 	// TODO: 在此添加调度处理程序代码
-	return ICC_write_bin((HANDLE)glngFd, (int)offset, (int)wlen, (char*)strData);
+	return ICC_write_bin(glngFd, (int)offset, (int)wlen, (char*)strData);
 }
 
 
-void CmwSICARDActXCtrl::OniReaderHandleChanged(void)
+void CmwSICARDActXCtrl::OniReaderhandleChanged(void)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
 

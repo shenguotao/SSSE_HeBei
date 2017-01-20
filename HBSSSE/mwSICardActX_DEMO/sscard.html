@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>社保接口Web测试</title>
+    <object id="READER" hidden classid="CLSID:E2BACA2A-6ABC-4751-81A3-DA19EDF18105"></object>
+    <link rel="stylesheet" href="sscard.css">
+    <script src="sscard.js"></script>
+</head>
+<body>
+<header>
+    <h1>社保接口Web测试程序</h1>
+</header>
+
+<div>
+    <aside>
+        <ul>
+            <li><a href="#ReadCardBas">基本信息读写</a></li>
+            <li><a href="#FingerPrint">指纹信息</a></li>
+            <li><a href="#PSAMCard">PSAM卡操作</a></li>
+            <li><a href="#PINCtr">PIN操作</a></li>
+        </ul>
+    </aside>
+<section>
+    <h2>基本信息读取</h2>
+    <br><strong>卡片类型: </strong><input type="text" id="txtCardType" value="3" style="width: 86px;">&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button onclick="RCardType()">卡类型识别</button>
+	<br><br>
+    <strong>基本信息: </strong><input type="text" id="txtCardBasInfo" style="width: 50%;"><br><br>
+    <hr class="tophr">
+
+    <a name="ReadCardBas"></a>
+    <br>
+    <fieldset>
+        <legend>基本信息读写</legend>
+        <span>版本信息:</span><input type="text" id="txtVerInfo" value = "V2.6">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br><br>
+		<span>个人密码:</span><input type="text" id="txtPassword">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br><br>
+		<span>数据地址:</span><input type="text" id="txtInputFileAddr">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br><br>
+		<span>读出数据:</span><input type="text" id="txtOutFileData">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="readCard()">通用读信息</button>
+		<br><br>
+        <span>写入数据:</span><input type="text" id="txtWriteCard">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="writeCard()">通用写信息</button>
+        <br><br><br>
+        <br>
+    </fieldset>
+    <br>
+    <hr class="tophr">
+
+    <a name="FingerPrint"></a>
+    <br>
+    <fieldset>
+        <legend>指纹信息</legend>
+        <span>指纹数据:</span><input type="text" id="txtFingerPrintInfo">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="readFingerPrint()">读取指纹</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="writeFingerPrint()">写入指纹</button>
+        <br><br><br>
+    </fieldset>
+    <br>
+    <hr class="tophr">
+
+    <a name="PSAMCard"></a>
+    <br>
+    <fieldset>
+        <legend>PSAM卡操作</legend>
+        <span>文件名及数据项:</span><input type="text" value="DF02EF07|$" id="txtWriteCardFileInfo"><br><br>
+        <span>写入数据项信息:</span><input type="text" value="DF02EF07|1234567^20150808^20250808^绍兴^|$" id="txtWriteCardDataInfo"><br><br>
+        <span>返回数据:</span><input type="text" id="txtWriteCard">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="GetPSAMcode()">读取设备编号</button>
+        <br><br><br>
+        <br>
+    </fieldset>
+    <br>
+    <hr class="tophr">
+
+    <a name="PINCtr"></a>
+    <br>
+    <fieldset>
+        <legend>PIN操作</legend>
+        <span>个人密码:</span><input type="text" id="txtVerifyPIN">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="VerifyPIN()">PIN校验</button>
+        <br><br>
+        <span>旧密码:</span><input type="text" id="txtOldPIN">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br><br>
+        <span>新密码:</span><input type="text" id="txtChangePIN">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="ChangePIN()">PIN修改</button>
+        <br><br>
+        <span>重置的密码:</span><input type="text" id="txtReloadPIN">&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="ReloadPIN()">PIN重置</button>
+		<br><br>
+    </fieldset>
+    <br>
+    <hr class="tophr">
+
+    <br>
+</section>
+
+</div>
+
+<footer>
+    <textarea id="msg"></textarea>
+    <p>明华</p>
+</footer>
+</body>
+</html>

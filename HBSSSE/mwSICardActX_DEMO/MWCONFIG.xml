@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<SSSE>
+    <ReaderConfig>
+        <!-- Port 端口号，-->
+        <!-- Baud 如果为串口设备则表示波特率-->
+        <!-- PassLen 默认密码长度-->
+        <!-- TimeOut 超时时间-->
+        <!-- Slot 默认大卡座 [0x01,0x0F]-->
+        <!-- SlotPsam 默认SAM卡卡座[0x11,0x1F]-->
+        
+        <Port>AUTO</Port>
+        <Baud>115200</Baud>
+        <PassLen>10</PassLen>
+        <TimeOut>30</TimeOut>
+        <Slot>0x01</Slot>
+        <SlotPsam>0x11</SlotPsam>
+        
+        
+        <CheckMark>1</CheckMark>
+        <DeliveryKey1>3333303030307368</DeliveryKey1>
+        <DeliveryKey2>3336303030307378</DeliveryKey2>
+    </ReaderConfig>
+    
+</SSSE>

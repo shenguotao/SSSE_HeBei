@@ -1,37 +1,9 @@
-﻿生成启动时间为 2017/1/20 14:44:27。
-     1>项目“E:\git\SSSE_HeBei\HBSSSE\mwSICARDActX\mwSICARDActX.vcxproj”在节点 2 上(build 个目标)。
-     1>InitializeBuildStatus:
-         正在对“Release\mwSICARDActX.unsuccessfulbuild”执行 Touch 任务。
-       Midl:
-         所有输出均为最新。
-       ClCompile:
-         所有输出均为最新。
-         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _MBCS /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\mwSICARDActX.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt mwSICARDActXCtrl.cpp
-         mwSICARDActXCtrl.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /l"0x0804" /IRelease\ /nologo /fo"Release\mwSICARDActX.res" mwSICARDActX.rc 
-       Link:
-         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.ocx" /INCREMENTAL:NO /NOLOGO /DEF:"mwSICARDActX.def" /MANIFEST /ManifestFile:"Release\mwSICARDActX.ocx.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.lib" /MACHINE:X86 /DLL Release\mwSICARDActX.res
-         Release\Cathelp.obj
-         Release\mwSICARDActX.obj
-         Release\mwSICARDActXCtrl.obj
-         Release\mwSICARDActXPropPage.obj
-         Release\stdafx.obj
-         E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARD.lib
-            正在创建库 E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.lib 和对象 E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.exp
-         正在生成代码
-         已完成代码的生成
-         mwSICARDActX.vcxproj -> E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.ocx
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.ocx;#2" /manifest Release\mwSICARDActX.ocx.intermediate.manifest "d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
-       RegisterOutput:
-         regsvr32 /s "E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.ocx"
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(744,5): warning MSB3075: 命令“regsvr32 /s "E:\git\SSSE_HeBei\HBSSSE\Release\mwSICARDActX.ocx"”已退出，代码为 5。请验证您是否有足够的权限来运行此命令。
-         上一错误已转换为警告，因为调用任务时指定了 ContinueOnError=true。
-         继续生成，因为任务“Exec”的“ContinueOnError”设置为“true”。
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(756,5): error MSB8011: 未能注册输出。请尝试启用“逐用户重定向”，或者使用提升的权限从命令提示符处注册该组件。
-     1>已完成生成项目“E:\git\SSSE_HeBei\HBSSSE\mwSICARDActX\mwSICARDActX.vcxproj”(build 个目标)的操作 - 失败。
+﻿生成启动时间为 2017-01-20 22:56:59。
+     1>项目“C:\Users\jeaming\Documents\GitHub\SSSE_HeBei\HBSSSE\mwSICARDActX\mwSICARDActX.vcxproj”在节点 2 上(clean 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Release\mwSICARDActX.lastbuildstate”。
+     1>已完成生成项目“C:\Users\jeaming\Documents\GitHub\SSSE_HeBei\HBSSSE\mwSICARDActX\mwSICARDActX.vcxproj”(clean 个目标)的操作。
 
-生成失败。
+生成成功。
 
-已用时间 00:00:07.51
+已用时间 00:00:00.06
